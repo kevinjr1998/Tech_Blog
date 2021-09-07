@@ -1,0 +1,18 @@
+[
+    {
+      "title": "Why MVC is so important",
+      "content": "lorem ipsum",
+      "user_id": 2
+    },
+    {
+      "title": "Authentication vs authorisation",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur lobortis aliquam nulla vitae fringilla",
+      "user_id": 3
+    },
+    {
+      "title": "Object relational mapping",
+      "content": "Maecenas et enim vel ligula consequat dictum. Cras porttitor ex id ex lobortis, non vulputate tortor facilisis. ",
+      "user_id": 1
+    }
+  ]
+  
