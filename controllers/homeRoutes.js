@@ -1,15 +1,19 @@
 
 const router = require('express').Router();
 const { Users, Posts, Comments } = require("../models");
+const withAuth = require("../util/auth");
 
 // "/" route handlers
 
-router.get('/', async function (req, res) {
+router.get('/', withAuth, async function (req, res) {
     const postData = await Posts.findAll({
         include: [
             {
               model: Users,
               attributes: ['name'],
+              attributes: {
+                exclude: ['password'],
+            }
             },
           ],
     });
@@ -17,10 +21,11 @@ router.get('/', async function (req, res) {
     eachPost.get({ plain: true })
     );
     debugger;
-    res.render('home', { blogPosts });
+    res.render('home', { blogPosts,
+        logged_in: req.session.logged_in });
 });
 
-router.get('/posts/:id', async function (req, res) {
+router.get('/posts/:id', withAuth, async function (req, res) {
     const postData = await Posts.findAll({
         where: {
             id: req.params.id,
@@ -33,6 +38,10 @@ router.get('/posts/:id', async function (req, res) {
             {
                 model: Comments,
                 include: [Users],
+                attributes: {
+                    exclude: ['password'],
+                }
+                
             }
           ],
     });
@@ -42,11 +51,21 @@ router.get('/posts/:id', async function (req, res) {
     );
 
     console.log(JSON.stringify(blogPosts));
-
-    res.render('eachPost', { Post: blogPosts[0] });
+    debugger;
+    res.render('eachPost', { Post: blogPosts[0], 
+        logged_in: req.session.logged_in, });
 });
 
 
 
+router.get('/login', (req, res) => {
+    debugger;
+    if (req.session.logged_in) {
+      res.redirect('/');
+      return;
+    }
+  
+    res.render('login');
+  });
 
 module.exports = router;
