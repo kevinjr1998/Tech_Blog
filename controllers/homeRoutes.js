@@ -28,6 +28,7 @@ router.get('/', withAuth, async function (req, res) {
 
 router.get('/posts/:id', withAuth, async function (req, res) {
     const postData = await Posts.findAll({
+      order: [[Comments,'date_created', 'DESC']],
         where: {
             id: req.params.id,
         },
