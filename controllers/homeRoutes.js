@@ -52,14 +52,15 @@ router.get('/posts/:id', withAuth, async function (req, res) {
 
     console.log(JSON.stringify(blogPosts));
     debugger;
-    res.render('eachPost', { Post: blogPosts[0], 
+    res.render('fullPosts', { blogPosts , 
         logged_in: req.session.logged_in, });
+
+
 });
 
 
 
 router.get('/login', (req, res) => {
-    debugger;
     if (req.session.logged_in) {
       res.redirect('/');
       return;

@@ -6,7 +6,7 @@ const dashboardRoutes = require('./dashboardRoutes.js');
 
 router.use('/', homeRoutes)
 router.use('/api', apiRoutes);
-// router.use('/dashboard', dashboardRoutes);
+router.use('/dashboard', dashboardRoutes);
 
 
 

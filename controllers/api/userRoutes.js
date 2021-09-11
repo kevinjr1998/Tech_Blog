@@ -4,6 +4,7 @@ const { Users } = require('../../models');
 
 // /api/users
 router.post('/', async (req, res) => {
+  
   try {
     debugger;
     const userData = await Users.create(req.body);
@@ -12,22 +13,20 @@ router.post('/', async (req, res) => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
 
-      res.status(200).json(userData);
+      res.status(200).json("User created");
     });
 
     
   } catch (err) {
+    console.log(err);
     res.status(400).json(err);
   }
 });
 
 router.post('/login', async (req, res) => {
-  debugger;
-  console.log(req.body);
   try {
     const userData = await Users.findOne({ where: { email: req.body.email } });
 
-    debugger;
     if (!userData) {
       res
         .status(400)
