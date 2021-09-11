@@ -2,7 +2,6 @@
 
 {{#with postGetter as |post|}}
 
-<form>
 <div class="card p-2 m-2 bg-secondary d-flex">
     <div class="card-header bg-secondary float-left ">
         <div = "form-group" class="card-title text-dark">
@@ -22,11 +21,10 @@
     <textarea id="updatedContent" class ="form-control border rounded bg-light" >{{content}}</textarea>
     </div>
     <div class="form-group">
-        <button type="submit" class="btn btn-primary my-1 bg-danger" id="postDelete" data-id={{id}}>delete</button>
-        <button type="submit" class="btn btn-primary my-1" id="postUpdate" data-id={{id}}>update</button>
+        <button type="button" class="btn btn-primary my-1 bg-danger" id="postDelete" data-id={{id}} >delete</button>
+        <button type="button" class="btn btn-primary my-1" id="postUpdate" data-id={{id}} >update</button>
     </div>
   </div>
-</form>
 
 
 {{/with}}

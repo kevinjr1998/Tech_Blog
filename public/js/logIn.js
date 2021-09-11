@@ -14,7 +14,7 @@ const loginFormHandler = async (event) => {
     
     if (response.ok) {
       debugger;
-      document.location.replace('/');
+      document.location.replace('/dashboard');
     } else {
       alert(response.statusText);
     }
@@ -24,8 +24,6 @@ const loginFormHandler = async (event) => {
 const signupFormHander = async (event) => {
  
     event.preventDefault();
-  
-    // TODO: Add a comment describing the functionality of these expressions
     const email = document.querySelector('#email-signup').value.trim();
     const password = document.querySelector('#password-signup').value.trim();
     const username = document.querySelector('#username-signup').value.trim();
@@ -52,6 +50,6 @@ document
   .querySelector('#login-form')
   .addEventListener('submit', loginFormHandler);
 
-  document
+document
   .querySelector('#signup-form')
   .addEventListener('submit', signupFormHander);

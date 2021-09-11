@@ -23,15 +23,14 @@ const newFormHandler = async (event) => {
 
   const updateFormHandler = async (event) => {
     event.preventDefault();
-  
+    debugger;
+    
     const postTitle = document.querySelector('#updatedTitle').value.trim();
     const postContent = document.querySelector('#updatedContent').value.trim();
 
     if (event.target.hasAttribute('data-id')) {
       const id = event.target.getAttribute('data-id');
     
-  
-   
     debugger;
     if ( postTitle && postContent) {
       const response = await fetch(`/api/posts/${id}`, {
@@ -54,7 +53,6 @@ const newFormHandler = async (event) => {
 
 
   const delButtonHandler = async (event) => {
-    event.preventDefault();
 
     if (event.target.hasAttribute('data-id')) {
       const id = event.target.getAttribute('data-id');
@@ -71,20 +69,29 @@ const newFormHandler = async (event) => {
     }
   };
 
-
-document
+if (document.querySelector('#new-post-form')){
+  document
   .querySelector('#new-post-form')
   .addEventListener('submit', newFormHandler);
+}
 
-document
+
+if(document
+  .querySelector('#postDelete')){
+
+  document
   .querySelector('#postDelete')
   .addEventListener('click', delButtonHandler);
 
-document
+  }
+
+
+  if (document.querySelector('#postUpdate')){
+    document
   .querySelector('#postUpdate')
   .addEventListener('click', updateFormHandler);
 
-
+  }
 
 
 

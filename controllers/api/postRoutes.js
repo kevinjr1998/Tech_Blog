@@ -25,7 +25,6 @@ router.delete('/:id', async (req, res) => {
     const PostData = await Posts.destroy({
       where: {
         id: req.params.id,
-        user_id: req.session.user_id,
       },
     });
 
@@ -42,6 +41,7 @@ router.delete('/:id', async (req, res) => {
 
 router.put('/:id', async (req, res) => {
   debugger;
+  console.log(req.body);
   try {
     const newPost = await Posts.update(
       {
@@ -52,7 +52,6 @@ router.put('/:id', async (req, res) => {
     {
       where: {
         id: req.params.id,
-        user_id: req.session.user_id,
       },
     });
     debugger;
