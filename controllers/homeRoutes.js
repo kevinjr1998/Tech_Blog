@@ -41,7 +41,6 @@ router.get('/posts/:id', withAuth, async function (req, res) {
                 attributes: {
                     exclude: ['password'],
                 }
-                
             }
           ],
     });

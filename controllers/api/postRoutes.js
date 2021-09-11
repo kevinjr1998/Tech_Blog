@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Posts } = require('../../models');
+const { Posts, Comments } = require('../../models');
 
 // /api/posts/
 
@@ -11,14 +11,32 @@ router.post('/', async (req, res) => {
       user_id: req.session.user_id,
     });
 
-    debugger;
-
     res.status(200).json(newPost);
   } catch (err) {
     console.log(err);
     res.status(400).json(err);
   }
 });
+
+router.post('/:id', async (req, res) => {
+  debugger;
+
+  try{
+
+  const newComment = await Comments.create({
+    content: req.body.content,
+    user_id: req.session.user_id,
+    post_id: req.params.id,
+  });
+
+  res.status(200).json(newComment);
+
+} catch(err){
+  console.log(err)
+  res.status(400).json(err);
+}
+});
+
 
 router.delete('/:id', async (req, res) => {
   try {
