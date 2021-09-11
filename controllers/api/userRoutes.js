@@ -6,7 +6,6 @@ const { Users } = require('../../models');
 router.post('/', async (req, res) => {
   
   try {
-    debugger;
     const userData = await Users.create(req.body);
 
     req.session.save(() => {
@@ -18,7 +17,6 @@ router.post('/', async (req, res) => {
 
     
   } catch (err) {
-    console.log(err);
     res.status(400).json(err);
   }
 });

@@ -1,10 +1,9 @@
-const router = require('express').Router();
-const { Posts, Comments } = require('../../models');
+const router = require("express").Router();
+const { Posts, Comments } = require("../../models");
 
 // /api/posts/
 
-router.post('/', async (req, res) => {
-  
+router.post("/", async (req, res) => {
   try {
     const newPost = await Posts.create({
       ...req.body,
@@ -18,27 +17,21 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.post('/:id', async (req, res) => {
-  debugger;
+router.post("/:id", async (req, res) => {
+  try {
+    const newComment = await Comments.create({
+      content: req.body.content,
+      user_id: req.session.user_id,
+      post_id: req.params.id,
+    });
 
-  try{
-
-  const newComment = await Comments.create({
-    content: req.body.content,
-    user_id: req.session.user_id,
-    post_id: req.params.id,
-  });
-
-  res.status(200).json(newComment);
-
-} catch(err){
-  console.log(err)
-  res.status(400).json(err);
-}
+    res.status(200).json(newComment);
+  } catch (err) {
+    res.status(400).json(err);
+  }
 });
 
-
-router.delete('/:id', async (req, res) => {
+router.delete("/:id", async (req, res) => {
   try {
     const PostData = await Posts.destroy({
       where: {
@@ -47,7 +40,7 @@ router.delete('/:id', async (req, res) => {
     });
 
     if (!PostData) {
-      res.status(404).json({ message: 'No Post found with this id!' });
+      res.status(404).json({ message: "No Post found with this id!" });
       return;
     }
 
@@ -57,29 +50,27 @@ router.delete('/:id', async (req, res) => {
   }
 });
 
-router.put('/:id', async (req, res) => {
+router.put("/:id", async (req, res) => {
   debugger;
   console.log(req.body);
   try {
     const newPost = await Posts.update(
       {
-      ...req.body,
-      user_id: req.session.user_id,
-      
-    },
-    {
-      where: {
-        id: req.params.id,
+        ...req.body,
+        user_id: req.session.user_id,
       },
-    });
+      {
+        where: {
+          id: req.params.id,
+        },
+      }
+    );
     debugger;
 
     res.status(200).json(newPost);
   } catch (err) {
-    console.log(err);
     res.status(400).json(err);
   }
 });
-
 
 module.exports = router;
