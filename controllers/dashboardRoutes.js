@@ -5,7 +5,14 @@ const withAuth = require('../util/auth');
 // /dashboard
 
 router.get('/', withAuth, async function(req , res) {
-    debugger;
+    const findUser = await Users.findOne({
+        where: {
+            id: req.session.user_id,
+        }
+    });
+    
+    const currentUser = findUser.get({ plain: true });
+
     const postData = await Posts.findAll({
         where: {
              user_id: req.session.user_id,
@@ -32,7 +39,7 @@ router.get('/', withAuth, async function(req , res) {
 
     console.log(JSON.stringify(blogPosts));
     res.render('dashboardPosts', { blogPosts, 
-        logged_in: req.session.logged_in, });
+        logged_in: req.session.logged_in, currentUser});
 
 });
 
