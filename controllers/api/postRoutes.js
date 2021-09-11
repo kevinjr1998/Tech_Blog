@@ -3,16 +3,19 @@ const { Posts } = require('../../models');
 
 // /api/posts/
 
-
 router.post('/', async (req, res) => {
+  
   try {
     const newPost = await Posts.create({
       ...req.body,
       user_id: req.session.user_id,
     });
 
+    debugger;
+
     res.status(200).json(newPost);
   } catch (err) {
+    console.log(err);
     res.status(400).json(err);
   }
 });
@@ -36,5 +39,30 @@ router.delete('/:id', async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+router.put('/:id', async (req, res) => {
+  debugger;
+  try {
+    const newPost = await Posts.update(
+      {
+      ...req.body,
+      user_id: req.session.user_id,
+      
+    },
+    {
+      where: {
+        id: req.params.id,
+        user_id: req.session.user_id,
+      },
+    });
+    debugger;
+
+    res.status(200).json(newPost);
+  } catch (err) {
+    console.log(err);
+    res.status(400).json(err);
+  }
+});
+
 
 module.exports = router;

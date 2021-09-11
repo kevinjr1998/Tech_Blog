@@ -52,7 +52,7 @@ router.get('/posts/:id', withAuth, async function (req, res) {
 
     console.log(JSON.stringify(blogPosts));
     debugger;
-    res.render('fullPosts', { blogPosts , 
+    res.render('fullPost', { blogPosts , 
         logged_in: req.session.logged_in, });
 
 

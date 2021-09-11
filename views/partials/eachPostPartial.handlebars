@@ -1,6 +1,6 @@
   <div class="card p-2 m-2 bg-secondary d-flex">
     <div class="card-header bg-secondary float-left">
-      <a href="/posts/{{id}}" class="text-decoration-none">
+      <a href="/dashboard/{{id}}" class="text-decoration-none">
         <h5 class="card-title text-dark">{{title}}</h5>
       </a>
       <div class="d-flex justify-content-between">
@@ -13,10 +13,11 @@
       </div>
     </div>
     <div class="card-body bg-light rounded">
-
       <p class="card-text">{{content}}</p>
     </div>
   </div>
+
+<h4>Comments: </h4>
 
   {{#each Comments as |comment|}}
     <div class="card">
@@ -33,3 +34,8 @@
       </div>
     </div>
   {{/each}}
+
+  <br>
+  <br>
+  <br>
+

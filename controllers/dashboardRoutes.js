@@ -31,7 +31,19 @@ router.get('/', withAuth, async function(req , res) {
     );
 
     console.log(JSON.stringify(blogPosts));
-    res.render('fullPosts', { blogPosts, 
+    res.render('dashboardPosts', { blogPosts, 
+        logged_in: req.session.logged_in, });
+
+});
+
+router.get('/:id', withAuth, async function (req, res) {
+    const postData = await Posts.findByPk(req.params.id);
+
+    const postGetter = postData.get({ plain: true });
+
+    console.log(JSON.stringify(postGetter));
+   
+    res.render('dashboardUpDel', { postGetter, 
         logged_in: req.session.logged_in, });
 
 });

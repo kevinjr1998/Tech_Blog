@@ -1,0 +1,30 @@
+<div class>
+  <div >
+    <h2>Welcome, {{blogPosts.[0].user.name}}!</h2>
+  </div>
+</div>
+
+  <h3>Create a New Post:</h3>
+
+  <div class="container border rounded">
+    <form id="new-post-form" class= "d-flex flex-column flex-wrap">
+      <div class="form-group">
+        <label for="post-title"><h4> post title: </h4></label>
+        <textarea class="form-control border rounded " type="text" id="post-title" name="post-title" placeholder="enter post title" rows="1"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="post-content"> <h4>post content:</h4> </label>
+        <textarea class="form-control border rounded " type="number" id="post-content" name="post-content" placeholder="enter content here"></textarea>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary my-1" id="newPostSubmit" >Create</button>
+      </div>
+    </form>
+  </div>
+
+
+  <h3>Your Posts:</h3>
+
+{{#each blogPosts as |post|}}
+{{> eachPostPartial}}
+{{/each}}
