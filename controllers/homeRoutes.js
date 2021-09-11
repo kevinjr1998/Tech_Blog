@@ -7,6 +7,7 @@ const withAuth = require("../util/auth");
 
 router.get('/', withAuth, async function (req, res) {
     const postData = await Posts.findAll({
+      order: [['date_created', 'DESC']],
         include: [
             {
               model: Users,
@@ -37,6 +38,7 @@ router.get('/posts/:id', withAuth, async function (req, res) {
             },
             {
                 model: Comments,
+                order: [['date_created', 'DESC']],
                 include: [Users],
                 attributes: {
                     exclude: ['password'],
@@ -56,7 +58,6 @@ router.get('/posts/:id', withAuth, async function (req, res) {
 
 
 });
-
 
 
 router.get('/login', (req, res) => {

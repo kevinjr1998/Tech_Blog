@@ -11,9 +11,11 @@ router.get('/', withAuth, async function(req , res) {
         }
     });
     
-    const currentUser = findUser.get({ plain: true });
+    const currentUser = await findUser.get({ plain: true });
 
     const postData = await Posts.findAll({
+        order: [['date_created', 'DESC'],
+    ],
         where: {
              user_id: req.session.user_id,
         },
@@ -24,6 +26,7 @@ router.get('/', withAuth, async function(req , res) {
             },
             {
                 model: Comments,
+                order: [['date_created', 'DESC']],
                 include: [Users],
                 attributes: {
                     exclude: ['password'],
@@ -46,7 +49,7 @@ router.get('/', withAuth, async function(req , res) {
 router.get('/:id', withAuth, async function (req, res) {
     const postData = await Posts.findByPk(req.params.id);
 
-    const postGetter = postData.get({ plain: true });
+    const postGetter = await postData.get({ plain: true });
 
     console.log(JSON.stringify(postGetter));
    
