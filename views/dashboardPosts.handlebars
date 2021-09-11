@@ -6,7 +6,7 @@
 
   <h3>Create a New Post:</h3>
 
-  <div class="container border rounded">
+  <div class="container border rounded bg-secondary">
     <form id="new-post-form" class= "d-flex flex-column flex-wrap">
       <div class="form-group">
         <label for="post-title"><h4> post title: </h4></label>
@@ -26,5 +26,5 @@
   <h3>Your Posts:</h3>
 
 {{#each blogPosts as |post|}}
-{{> eachPostPartial}}
+{{> eachPostAndComments}}
 {{/each}}

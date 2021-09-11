@@ -1,0 +1,45 @@
+  <div class="card p-2 m-2 bg-secondary d-flex" id = "postCard" data-id = {{id}}>
+    <div class="card-header bg-secondary float-left">
+      <a href="/dashboard/{{id}}" class="text-decoration-none">
+        <h5 class="card-title text-dark">{{title}}</h5>
+      </a>
+      <div class="d-flex justify-content-between">
+        <h6 class="card-subtitle mb-2 text-light float-left d-inline-flex">
+          Posted by:
+          {{user.name}}</h6>
+        <h6 class="card-subtitle mb-2 text-dark float-right d-inline-flex">
+          Uploaded on:
+          {{format_date date_created}}</h6>
+      </div>
+    </div>
+    <div class="card-body bg-light rounded">
+      <p class="card-text">{{content}}</p>
+    </div>
+  </div>
+
+<h4 class="m-2">Comments: </h4>
+
+<div class="px-4 mx-4"></div>
+
+  {{#each Comments as |comment|}}
+    <div class="card p-2 m-2">
+      <div class="d-flex flex-wrap justify-content-between">
+        <h6
+          class="card-subtitle mb-2 text-dark float-left d-inline-flex"
+        >{{comment.user.name}}</h6>
+        <h6
+          class="card-subtitle mb-2 text-dark float-right d-inline-flex"
+        >{{format_date date_created}}</h6>
+      </div>
+      <div class="card-body d-flex">
+        {{content}}
+      </div>
+    </div>
+  {{/each}}
+
+  </div>
+
+  <br>
+  <br>
+  <br>
+

@@ -11,18 +11,18 @@ Posts.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    title: { //changed from name
+    title: { 
       type: DataTypes.STRING,
       allowNull: false,
     },
-    content: { //changed from description
+    content: { 
       type: DataTypes.STRING,
     },
     date_created: {
       type: DataTypes.DATE,
       allowNull: false,
       defaultValue: DataTypes.NOW,
-    }, //needed_funding field deleted
+    }, 
     user_id: {
       type: DataTypes.INTEGER,
       references: {
