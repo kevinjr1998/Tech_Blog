@@ -16,7 +16,7 @@ const loginFormHandler = async (event) => {
       debugger;
       document.location.replace('/');
     } else {
-      alert(response.message);
+      alert("Unable to login. Please check your credientials.");
     }
   }
 };
@@ -38,7 +38,7 @@ const signupFormHander = async (event) => {
       if (response.ok) {
         document.location.replace('/');
       } else {
-        alert(response.message);
+        alert("Unable to create user");
       }
     }
   };
