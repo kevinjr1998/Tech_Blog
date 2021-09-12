@@ -5,7 +5,6 @@ const newCommentHandler = async (event) => {
     const commentContent = document.querySelector('#commentText').value.trim();
 
     const id = document.querySelector('#postCard').getAttribute('data-id');
-    debugger;
     if (commentContent) {
       const response = await fetch(`/api/posts/${id}`, {
         method: 'POST',

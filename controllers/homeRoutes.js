@@ -21,7 +21,6 @@ router.get('/', withAuth, async function (req, res) {
     const blogPosts = postData.map((eachPost) => 
     eachPost.get({ plain: true })
     );
-    debugger;
     res.render('home', { blogPosts,
         logged_in: req.session.logged_in });
 });
@@ -53,7 +52,6 @@ router.get('/posts/:id', withAuth, async function (req, res) {
     );
 
     console.log(JSON.stringify(blogPosts));
-    debugger;
     res.render('fullPost', { blogPosts , 
         logged_in: req.session.logged_in, });
 

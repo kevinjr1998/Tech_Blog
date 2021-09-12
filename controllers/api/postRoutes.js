@@ -51,7 +51,6 @@ router.delete("/:id", async (req, res) => {
 });
 
 router.put("/:id", async (req, res) => {
-  debugger;
   console.log(req.body);
   try {
     const newPost = await Posts.update(
@@ -65,8 +64,6 @@ router.put("/:id", async (req, res) => {
         },
       }
     );
-    debugger;
-
     res.status(200).json(newPost);
   } catch (err) {
     res.status(400).json(err);

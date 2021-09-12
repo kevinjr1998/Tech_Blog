@@ -23,7 +23,6 @@ const newFormHandler = async (event) => {
 
   const updateFormHandler = async (event) => {
     event.preventDefault();
-    debugger;
     
     const postTitle = document.querySelector('#updatedTitle').value.trim();
     const postContent = document.querySelector('#updatedContent').value.trim();
@@ -31,7 +30,6 @@ const newFormHandler = async (event) => {
     if (event.target.hasAttribute('data-id')) {
       const id = event.target.getAttribute('data-id');
     
-    debugger;
     if ( postTitle && postContent) {
       const response = await fetch(`/api/posts/${id}`, {
         method: 'PUT',
@@ -40,7 +38,6 @@ const newFormHandler = async (event) => {
           'Content-Type': 'application/json',
         },
       });
-      debugger;
   
       if (response.ok) {
         document.location.replace('/dashboard');
