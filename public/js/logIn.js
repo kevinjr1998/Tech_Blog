@@ -16,7 +16,7 @@ const loginFormHandler = async (event) => {
       debugger;
       document.location.replace('/');
     } else {
-      alert("Unable to login. Please check your credientials.");
+      alert("Unable to login. Please check your credentials.");
     }
   }
 };
