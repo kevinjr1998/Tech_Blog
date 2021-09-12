@@ -11,12 +11,12 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-secondary w-100">
         <div class="d-flex justify-content-start text-dark w-100" id="navbarNavAltMarkup">
           <div class="navbar-nav d-flex">
-              <div class="d-inline-flex"> 
+              <div class="d-inline-flex float-left"> 
                 <a class="nav-item nav-link active p-2" href="/"> Home </a>
                 <a class="nav-item nav-link active p-2" href="/dashboard"> Dashboard </a>
-                <a class="nav-item nav-link active p-2" href = "" id="logout"> Logout </a>
+                <a class="nav-item nav-link active p-2" style = "cursor: pointer;" id="logout"> Logout </a>
               </div>
-            <a class=" justify-content-start navbar-brand d-flex flex-wrap shadow w-100 p-2 mb-3 m-3 bg-white rounded" href="/">Tech Blog</a>
+            <a class=" justify-content-start navbar-brand d-flex flex-wrap shadow w-100 p-2 mb-3 m-3 bg-white rounded float-right" href="/">Tech Blog</a>
           </div>
         </div>
       </nav>
@@ -29,7 +29,7 @@
        <script src="/js/logout.js"></script>
        <script src="/js/dashboard.js"></script>
        <script src="/js/posts.js"></script>
-       {{else }}
+       {{else}}
        <script src="/js/logIn.js"></script>
        {{/if}}
 

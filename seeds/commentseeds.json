@@ -10,9 +10,29 @@
       "post_id": 2
     },
     {
-      "content": "Agree with this so much ",
+      "content": "Yes definitely, i'm glad i dont have to write SQL queries from scatch! ",
+      "user_id": 2,
+      "post_id": 3
+    },
+    {
+      "content": "Yeah, this is great to know!",
+      "user_id": 1,
+      "post_id": 2
+    },
+    {
+      "content": "Agree with this so much",
       "user_id": 1,
       "post_id": 1
+    },
+    {
+      "content": "I'm so glad about that!",
+      "user_id": 1,
+      "post_id": 4
+    },
+    {
+      "content": "Agree with this so much",
+      "user_id": 2,
+      "post_id": 4
     }
 ]
   
